@@ -11,7 +11,7 @@ All analytical steps, figures, tables, and computable phenotype metadata are ide
 ## 2. Directory Structure
 
 ```
-STUDIES_NEW/study-mcbk/sample/
+MCBK_BPJS
 ├── README.md                                # Master sample documentation & reproducibility guide
 ├── data/
 │   ├── bpjs_dm_sample.duckdb                # Lightweight DuckDB database (2,500 pts; 26.5 MB)
@@ -86,7 +86,7 @@ To execute the entire sample analysis pipeline from scratch:
 
 ```bash
 # 1. Navigate to sample directory
-cd sample
+cd MCBK_BPJS
 
 # 2. Extract Demographics & Record Overviews
 python3 scripts/01_extract_cohort_metrics.py
