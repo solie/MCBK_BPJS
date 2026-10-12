@@ -1,13 +1,5 @@
 # Study MCBK (Sample Reproduction Repository)
 
-**Target Journal:** *Learning Health Systems* (Wiley Open Access)  
-**Movement:** Mobilizing Computable Biomedical Knowledge (MCBK) Global Initiative  
-**Parent Study:** [`STUDIES_NEW/study-mcbk/`](../)  
-**Sample Database:** `data/bpjs_dm_sample.duckdb` (2,500 enrollees, 26.51 MB)  
-**Purpose:** Lightweight, full-fidelity reproducibility package suitable for GitHub, CI/CD testing, and offline demonstration.
-
----
-
 ## 1. Overview & Motivation
 
 National health insurance claims databases often span tens of gigabytes, posing severe barriers to open-science verification and code portability. To enable frictionless reproducibility on GitHub without requiring high-performance computing clusters or Git LFS, this folder mirrors the entire architecture of `study-mcbk` using a **statistically representative 2,500-enrollee sample** (`data/bpjs_dm_sample.duckdb`).
