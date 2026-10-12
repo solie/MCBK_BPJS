@@ -1,0 +1,5 @@
+clinical_category,episode_count,episode_pct,avg_length_of_stay,avg_tariff_idr,median_tariff_idr,severe_case_pct
+T2DM + Chronic Kidney Disease,12525,9.91,20.15,1003223.0,879100.0,0.53
+T2DM + Cardiorenal Syndrome (HTN & CKD),483,0.38,38.85,691335.0,192700.0,0.83
+T2DM Uncomplicated / Other,89520,70.86,34.92,587776.0,190400.0,0.47
+T2DM + Hypertension Alone,23811,18.85,40.97,522265.0,190400.0,0.71

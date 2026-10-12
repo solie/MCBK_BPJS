@@ -1,0 +1,38 @@
+{
+  "resourceType": "EvidenceVariable",
+  "id": "bpjs-cql-phenotype-t2dm-cardiorenal",
+  "meta": {
+    "profile": ["http://hl7.org/fhir/StructureDefinition/EvidenceVariable"]
+  },
+  "url": "http://bpjs-cbk.id/fhir/EvidenceVariable/t2dm-cardiorenal-progression",
+  "version": "1.0.0",
+  "name": "BPJSType2DiabetesCardiorenalPhenotype",
+  "title": "Computable Phenotype for T2DM Cardiorenal Progression in BPJS Single-Payer Claims",
+  "status": "active",
+  "date": "2026-03-14",
+  "publisher": "Indonesian Learning Health Systems Collaborative",
+  "description": "Standardized computable phenotype resolving administrative Z-code masking in Indonesian national health insurance claims (2015-2024), extracting presenting clinical conditions from admission ICD-10 and secondary diagnosis registries.",
+  "characteristic": [
+    {
+      "description": "Type 2 Diabetes Mellitus confirmed via admission code FKL16 or secondary registry sec_diag",
+      "definitionExpression": {
+        "language": "text/cql",
+        "expression": "HasType2DiabetesMellitus"
+      }
+    },
+    {
+      "description": "Exclusion of pure administrative follow-up episodes lacking secondary or admission clinical confirmation",
+      "definitionExpression": {
+        "language": "text/cql",
+        "expression": "ExcludeAdministrativeZCodesWithoutClinicalContext"
+      }
+    },
+    {
+      "description": "Cardiorenal Comorbidity: Hypertensive heart/kidney disease (I10-I13) or Chronic Kidney Disease (N18)",
+      "definitionExpression": {
+        "language": "text/cql",
+        "expression": "HasCardiorenalComorbidity"
+      }
+    }
+  ]
+}

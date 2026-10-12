@@ -1,0 +1,62 @@
+{
+  "@context": {
+    "schema": "https://schema.org/",
+    "mcbk": "https://kframe.github.io/mcbk-metadata-ontology/",
+    "fhir": "http://hl7.org/fhir/",
+    "dc": "http://purl.org/dc/elements/1.1/"
+  },
+  "@type": "mcbk:ComputableBiomedicalKnowledgeArtifact",
+  "identifier": "urn:mcbk:bpjs:phenotype:t2dm-cardiorenal-v1",
+  "name": "Standardized Computable Phenotype for Type 2 Diabetes Cardiorenal Progression in Indonesian Health Insurance Claims",
+  "version": "1.0.0",
+  "datePublished": "2026-03-14",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Indonesian Learning Health Systems Collaborative"
+  },
+  "thematicArea": "Standards, interoperability & metadata",
+  "description": "Standardized computable phenotype and semantic disambiguation pipeline resolving administrative Z-code masking (69.5% - 83.7%) in BPJS Kesehatan hospital encounter records (2015-2024), recovering true clinical presentation from admission ICD-10 (FKL16) and secondary diagnosis registries (sec_diag).",
+  "keywords": [
+    "Computable Biomedical Knowledge",
+    "Learning Health Systems",
+    "BPJS Kesehatan",
+    "Type 2 Diabetes",
+    "Cardiorenal Syndrome",
+    "Administrative Claims",
+    "FAIR Metadata"
+  ],
+  "computableRepresentation": {
+    "format": "text/cql",
+    "cqlFile": "metadata/cql_phenotype_definition.cql",
+    "fhirResource": "metadata/fhir_evidence_variable.json",
+    "targetEngine": "DuckDB-v1.2+",
+    "sqlImplementation": "scripts/02_evaluate_phenotype_ascertainment.py"
+  },
+  "dataRequirements": {
+    "sourceSystem": "BPJS Kesehatan (Badan Penyelenggara Jaminan Sosial Kesehatan)",
+    "databaseSchema": "DuckDB-Relational",
+    "tables": [
+      {
+        "table": "fkrtl",
+        "keyColumns": ["PSTV01", "FKL02", "FKL03", "FKL16", "FKL18", "FKL22", "FKL23", "FKL32"]
+      },
+      {
+        "table": "sec_diag_dm",
+        "keyColumns": ["fkl02", "dx_code", "dx_description"]
+      },
+      {
+        "table": "kepesertaan",
+        "keyColumns": ["PSTV01", "PSTV03", "PSTV05", "PSTV07", "PSTV08"]
+      }
+    ]
+  },
+  "empiricalValidation": {
+    "cohortSize": 164132,
+    "encounterRecords": 8050867,
+    "naivePrimaryAscertainment": "3.22%",
+    "cbkPhenotypeAscertainment": "37.13%",
+    "relativeSensitivityGain": "11.5x",
+    "validationPeriod": "2015-01-01 to 2024-12-31"
+  }
+}

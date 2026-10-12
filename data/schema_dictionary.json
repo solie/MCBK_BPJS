@@ -1,0 +1,53 @@
+{
+  "database": "bpjs_dm_2015_2024.duckdb",
+  "version": "2026.03",
+  "tables": {
+    "kepesertaan": {
+      "description": "Longitudinal registry of insured members, demographics, and subsidy tiers",
+      "rowCount": 910412,
+      "columns": {
+        "PSTV01": "Unique Member/Patient Identifier (BIGINT)",
+        "PSTV02": "Family Identifier (BIGINT)",
+        "PSTV03": "Birth Date (TIMESTAMP)",
+        "PSTV05": "Gender (1: Male, 2: Female)",
+        "PSTV07": "Care Class (Kelas 1, 2, 3)",
+        "PSTV08": "Member Segmentation (PBI APBN, PBI APBD, PBPU, PPU, BUKAN PEKERJA)",
+        "PSTV15": "Analytical Sample Weight (DOUBLE)",
+        "PSTV16": "Sample Tracking Year (BIGINT)"
+      }
+    },
+    "fkrtl": {
+      "description": "Secondary and tertiary hospital encounter episodes (inpatient & outpatient)",
+      "rowCount": 8050867,
+      "columns": {
+        "FKL02": "Unique Episode Identifier (VARCHAR)",
+        "PSTV01": "Member Identifier (BIGINT)",
+        "FKL03": "Admission Date (TIMESTAMP_NS)",
+        "FKL04": "Discharge Date (TIMESTAMP_NS)",
+        "FKL10": "Service Type (Rawat Jalan / Rawat Inap)",
+        "FKL16": "Admission Clinical Diagnosis ICD-10 (3-6 digits) [Target for True Clinical Reason]",
+        "FKL18": "Primary Discharge Diagnosis ICD-10 [83.7% Administrative Z-Codes]",
+        "FKL22": "Length of Hospital Stay in Days (BIGINT)",
+        "FKL23": "Case Severity Level (Rawat Jalan, Ringan, Sedang, Berat)",
+        "FKL32": "INA-CBG Episode Tariff Claim in IDR (DOUBLE)"
+      }
+    },
+    "sec_diag_dm": {
+      "description": "Normalized multi-row secondary diagnosis registry",
+      "rowCount": 10833677,
+      "columns": {
+        "fkl02": "Foreign Key to fkrtl.FKL02 (VARCHAR)",
+        "dx_code": "Secondary ICD-10 Diagnosis Code (VARCHAR)",
+        "dx_description": "Standardized English Description (VARCHAR)"
+      }
+    },
+    "fktp_kapitasi": {
+      "description": "Primary healthcare encounter registry under capitation system",
+      "rowCount": 11209727,
+      "columns": {
+        "KRTK01": "Patient Card Number (BIGINT)",
+        "KRTK03": "Primary Care Encounter Date (TIMESTAMP)"
+      }
+    }
+  }
+}

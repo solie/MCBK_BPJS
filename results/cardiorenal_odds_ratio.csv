@@ -1,0 +1,2 @@
+exposure,outcome,cases_exposed,controls_exposed,cases_unexposed,controls_unexposed,odds_ratio,ci_lower_95,ci_upper_95,p_value
+Hypertension (I10-I13),Chronic Kidney Disease (N18),359,1285,47,655,3.89,2.83,5.35,3.177348822089298e-21
